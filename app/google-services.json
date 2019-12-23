@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "368607636304",
+    "firebase_url": "https://notebooks-ehdaa-hassan.firebaseio.com",
+    "project_id": "notebooks-ehdaa-hassan",
+    "storage_bucket": "notebooks-ehdaa-hassan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368607636304:android:8d268033b4b138a9c71a55",
+        "android_client_info": {
+          "package_name": "com.example.android.notesproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "368607636304-mum2uka88u3m3n3vnqnd7hbdak2ae6i9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwo3kMsjCeniFyHdJxb2woE-lfVCr6sFc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "368607636304-mum2uka88u3m3n3vnqnd7hbdak2ae6i9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

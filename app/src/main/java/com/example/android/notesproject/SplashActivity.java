@@ -22,12 +22,21 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         Button signin = (Button)findViewById(R.id.signin);
-        /*signin.setOnClickListener(new View.OnClickListener() {
+        signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SplashActivity.this, SigninActivity.class);
+                Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
+
+        Button signup = (Button)findViewById(R.id.signup);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SplashActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
