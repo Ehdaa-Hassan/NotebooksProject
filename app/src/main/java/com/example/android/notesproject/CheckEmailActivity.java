@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class CheckEmailActivity extends AppCompatActivity {
 
@@ -28,11 +29,13 @@ public class CheckEmailActivity extends AppCompatActivity {
         openEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent emailIntent = new Intent(Intent.ACTION_VIEW);
-                emailIntent.setType("message/rfc822");
                 try {
-                    startActivity(emailIntent);
-                }catch (Exception e){}
+                    Intent mailClient = new Intent(Intent.ACTION_VIEW);
+                    mailClient.setClassName("com.google.android.gm", "com.google.android.gm.ConversationListActivityGmail");
+                    startActivity(mailClient);
+                } catch (Exception e) {
+                    Toast.makeText(CheckEmailActivity.this,"Error",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
