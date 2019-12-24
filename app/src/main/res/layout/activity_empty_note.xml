@@ -100,9 +100,10 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_add_24px"
         android:padding="10dp"
-        android:background="@drawable/gradient_floating_action"
         fab:fab_label="Menu Item 1"
         fab:fab_size="normal"
+        app:fab_colorPressed="@color/grayText"
+        app:fab_colorNormal="@color/colorPrimary"
         android:layout_gravity="end"
         />
 

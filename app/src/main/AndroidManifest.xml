@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
+        <activity android:name=".AddNewNoteActivity"></activity>
         <activity android:name=".EmptyNoteActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,9 +33,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".SplashActivity" />
         <activity android:name=".SecondActivity" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

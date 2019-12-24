@@ -27,8 +27,8 @@ public class EmptyNoteActivity extends AppCompatActivity {
         floatingActionButton = (FloatingActionButton)findViewById(R.id.material_design_floating_action_menu_item);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(EmptyNoteActivity.this,"Option1 clicked",Toast.LENGTH_SHORT).show();
-
+                        Intent intent = new Intent(EmptyNoteActivity.this, AddNewNoteActivity.class);
+                        startActivity(intent);
 
             }
         });
