@@ -23,8 +23,8 @@ public class SignInActivity extends AppCompatActivity {
 
     Button signin;
     EditText email, password;
-    private FirebaseAuth authentication;
     boolean isUserSignedIn;
+    private FirebaseAuth authentication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +52,13 @@ public class SignInActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         signin = (Button) findViewById(R.id.signin);
-        authentication= FirebaseAuth.getInstance();
+        authentication = FirebaseAuth.getInstance();
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if((email!=null)&&(password!=null)){
-                    String  emailValue = email.getText().toString();
-                    String  passwardValue = password.getText().toString();
+                if ((email != null) || (password != null)) {
+                    String emailValue = email.getText().toString();
+                    String passwardValue = password.getText().toString();
                     authentication.signInWithEmailAndPassword(emailValue, passwardValue)
                             .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
@@ -75,12 +75,11 @@ public class SignInActivity extends AppCompatActivity {
 
                                     }
 
-                                    // ...
                                 }
                             });
 
-                }else{
-                    Toast.makeText(getApplicationContext(),"Please Enter your Email and/or password",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Please Enter your Email and/or password", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -92,7 +91,7 @@ public class SignInActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = authentication.getCurrentUser();
-        if(currentUser!=null){
+        if (currentUser != null) {
             isUserSignedIn = true;
         }
     }

@@ -32,6 +32,7 @@ public class CheckEmailActivity extends AppCompatActivity {
                 try {
                     Intent mailClient = new Intent(Intent.ACTION_VIEW);
                     mailClient.setClassName("com.google.android.gm", "com.google.android.gm.ConversationListActivityGmail");
+
                     startActivity(mailClient);
                 } catch (Exception e) {
                     Toast.makeText(CheckEmailActivity.this,"Error",Toast.LENGTH_SHORT).show();
