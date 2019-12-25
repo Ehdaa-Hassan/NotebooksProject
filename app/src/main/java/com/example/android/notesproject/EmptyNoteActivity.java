@@ -5,11 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.android.notesproject.R;
 import com.github.clans.fab.FloatingActionButton;
 
 public class EmptyNoteActivity extends AppCompatActivity {
@@ -27,7 +23,7 @@ public class EmptyNoteActivity extends AppCompatActivity {
         floatingActionButton = (FloatingActionButton)findViewById(R.id.material_design_floating_action_menu_item);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                        Intent intent = new Intent(EmptyNoteActivity.this, AddNewNoteActivity.class);
+                        Intent intent = new Intent(EmptyNoteActivity.this, AddNewNotebookActivity.class);
                         startActivity(intent);
 
             }
