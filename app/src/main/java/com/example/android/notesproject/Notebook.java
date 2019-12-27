@@ -9,6 +9,8 @@ public class Notebook {
     private String name;
     private ArrayList<Note> listOfNotes;
 
+    public Notebook() {
+    }
 
     public Notebook(String color, String name) {
         this.color = color;

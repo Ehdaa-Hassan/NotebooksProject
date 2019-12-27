@@ -14,6 +14,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +24,8 @@ public class SignUpActivity extends AppCompatActivity {
     EditText email,password;
     Button signup;
     boolean isUserSignedIn;
+    private DatabaseReference database;
+    FirebaseUser firebaceUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class SignUpActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         signup = (Button) findViewById(R.id.signup);
         authentication= FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance().getReference("Users");
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,8 +57,13 @@ public class SignUpActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        FirebaseUser user = authentication.getCurrentUser();
-                                        Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+                                        firebaceUser = FirebaseAuth.getInstance().getCurrentUser();
+                                        String uid = firebaceUser.getUid();
+                                        String email = firebaceUser.getEmail();
+                                        User user = new User(uid,email);
+                                       database.child(uid).setValue(user);
+
+                                        Intent intent = new Intent(SignUpActivity.this, EmptyNoteActivity.class);
                                         startActivity(intent);
 
                                     } else {
@@ -82,8 +92,8 @@ public class SignUpActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = authentication.getCurrentUser();
-        if(currentUser!=null){
+        firebaceUser = authentication.getCurrentUser();
+        if(firebaceUser!=null){
             isUserSignedIn = true;
         }
     }

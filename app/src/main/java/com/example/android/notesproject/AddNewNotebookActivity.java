@@ -46,7 +46,9 @@ public class AddNewNotebookActivity extends AppCompatActivity {
             public void onClick(View view) {
                if(nameEditText.getText() != null){
                    Notebook notebook = new Notebook(color, nameEditText.getText().toString());
-                   
+
+
+
 
 
                }
