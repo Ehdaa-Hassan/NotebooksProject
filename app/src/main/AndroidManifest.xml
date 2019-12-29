@@ -9,10 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddNewNotebookActivity"></activity>
-        <activity android:name=".EmptyNoteActivity">
-
-        </activity>
+        <activity android:name=".NotebooksActivity">           </activity>
+        <activity android:name=".AddNewNotebookActivity" />
+        <activity android:name=".EmptyNoteActivity"></activity>
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"

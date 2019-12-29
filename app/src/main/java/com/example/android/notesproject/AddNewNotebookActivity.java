@@ -1,6 +1,8 @@
 package com.example.android.notesproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,12 +11,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 public class AddNewNotebookActivity extends AppCompatActivity {
     ImageView chosenNoteColor;
     EditText nameEditText;
     TextView cancel;
     String color;
+    FirebaseUser firebaseUser;
+    DatabaseReference databaseReference;
 
 
     @Override
@@ -23,6 +32,7 @@ public class AddNewNotebookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_notebook);
 
         color="note1";
+
          chosenNoteColor = (ImageView) findViewById(R.id.chosen_note);
 
         final Button note1 = (Button) findViewById(R.id.note1);
@@ -41,15 +51,21 @@ public class AddNewNotebookActivity extends AppCompatActivity {
         nameEditText = (EditText) findViewById(R.id.name);
         TextView cancel = (TextView) findViewById(R.id.cancel);
 
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Notebook");
+
         saveNoteBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                if(nameEditText.getText() != null){
-                   Notebook notebook = new Notebook(color, nameEditText.getText().toString());
 
+                   String uid = firebaseUser.getUid();
+                   String notebookId = databaseReference.push().getKey();
+                   Notebook notebook = new Notebook(notebookId,color, nameEditText.getText().toString(),uid);
+                   databaseReference.child(notebookId).setValue(notebook);
 
-
-
+                   Intent intent = new Intent(AddNewNotebookActivity.this,NotebooksActivity.class);
+                   startActivity(intent);
 
                }
 
@@ -89,6 +105,7 @@ public class AddNewNotebookActivity extends AppCompatActivity {
             public void onClick(View view) {
                 chosenNoteColor.setImageResource(R.drawable.note3);
                 color="note3";
+
 
             }
         });
