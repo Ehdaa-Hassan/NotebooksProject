@@ -27,6 +27,7 @@ public class NotebooksActivity extends AppCompatActivity {
     ArrayList<Integer> notebookImageArrayList ;
     GridView grid;
     GridAdapter adapter;
+    Notebook notebook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +40,14 @@ public class NotebooksActivity extends AppCompatActivity {
 
 
 
-                databaseReference = FirebaseDatabase.getInstance().getReference().child("Notebook");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Notebook");
         userUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         ValueEventListener notebookListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot notebookSnapshot : dataSnapshot.getChildren()) {
-                    Notebook notebook = notebookSnapshot.getValue(Notebook.class);
+                    notebook = notebookSnapshot.getValue(Notebook.class);
                     if(notebook.getUserID().equals(userUID)){
                         notebookArrayList.add(notebook);
                         notebookNamesArrayList.add(notebook.getName());
@@ -60,8 +61,9 @@ public class NotebooksActivity extends AppCompatActivity {
                     grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            Toast.makeText(NotebooksActivity.this,"You clicked"+notebookNamesArrayList.get(i),Toast.LENGTH_SHORT)
-                                    .show();
+                           Intent intent = new Intent(NotebooksActivity.this,NotesActivity.class);
+                           intent.putExtra("notebookID",notebookArrayList.get(i).getId());
+                           startActivity(intent);
                         }
                     });
                 }

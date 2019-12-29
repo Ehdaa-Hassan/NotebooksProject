@@ -63,7 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
                                         User user = new User(uid,email);
                                        database.child(uid).setValue(user);
 
-                                        Intent intent = new Intent(SignUpActivity.this, EmptyNoteActivity.class);
+                                        Intent intent = new Intent(SignUpActivity.this, EmptyNotebookActivity.class);
                                         startActivity(intent);
 
                                     } else {

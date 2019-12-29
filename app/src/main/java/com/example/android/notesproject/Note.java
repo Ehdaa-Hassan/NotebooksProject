@@ -6,14 +6,14 @@ public class Note {
     private String id;
     private String title;
     private String Description;
-    private Date date;
+    private Long date;
     private String notebookID;
 
 
     public Note() {
     }
 
-    public Note(String id, String title, String description, Date date, String notebookID) {
+    public Note(String id, String title, String description, Long date, String notebookID) {
         this.id = id;
         this.title = title;
         Description = description;
@@ -54,11 +54,11 @@ public class Note {
         Description = description;
     }
 
-    public Date getDate() {
+    public Long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Long date) {
         this.date = date;
     }
 }
